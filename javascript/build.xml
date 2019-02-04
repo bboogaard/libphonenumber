@@ -4,7 +4,7 @@
   <property name="closure-compiler.dir"
             value="${basedir}/../../closure-compiler" />
   <property name="closure-compiler.jar"
-            value="${closure-compiler.dir}/target/closure-compiler-1.0-SNAPSHOT.jar" />
+            value="${basedir}/closure-compiler.jar" />
   <property name="closure-library.dir"
             value="${basedir}/../../closure-library" />
   <property name="closure-linter.dir"
@@ -94,13 +94,13 @@
   <target name="setnulldevice" depends="nul,devnull" />
 
   <target name="clean" description="deletes all generated files">
-    <delete file="i18n/phonenumbers/demo-compiled.js" />
+    <delete file="i18n/phonenumbers/aknl-compiled.js" />
   </target>
 
-  <target name="compile-demo"
-          description="generates demo-compiled.js">
-    <closure-compile inputfile="i18n/phonenumbers/demo.js"
-                     outputfile="i18n/phonenumbers/demo-compiled.js">
+  <target name="aknl-demo"
+          description="generates aknl-compiled.js">
+    <closure-compile inputfile="i18n/phonenumbers/aknl.js"
+                     outputfile="i18n/phonenumbers/aknl-compiled.js">
       <extraflags>
         <arg line='-p "i18n/phonenumbers"' />
         <arg line='-e "i18n/phonenumbers/metadatafortesting.js"' />
@@ -137,11 +137,11 @@
     </closure-compile>
   </target>
 
-  <target name="compile" depends="compile-demo,compile-tests" />
+  <target name="compile" depends="aknl-demo,compile-tests" />
 
   <target name="lint" description="lints all javascript files">
     <gjslint inputfile="i18n/phonenumbers/asyoutypeformatter*.js" />
-    <gjslint inputfile="i18n/phonenumbers/demo.js" />
+    <gjslint inputfile="i18n/phonenumbers/aknl.js" />
     <gjslint inputfile="i18n/phonenumbers/phonenumberutil*.js" />
     <gjslint inputfile="i18n/phonenumbers/shortnumberinfo*.js" />
   </target>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Phone Number Parser Demo</title>
+<script src="aknl-compiled.js"></script>
+</head>
+<body>
+
+<h2>Phone Number Parser Demo</h2>
+
+<form>
+  <p>
+  Specify a Phone Number:
+  <input type="text" name="phoneNumber" id="phoneNumber" size="25" />
+  </p>
+  <p>
+  Result:
+  <input type="text" name="result" id="result" size="25" />
+  </p>
+  <input type="submit" value="Submit" onclick="return phoneNumberParse();" />
+  <input type="reset" value="Reset" />
+  <p>
+  <textarea id="output" rows="30" cols="80"></textarea>
+  </p>
+</form>
+
+<script>
+    function phoneNumberParse() {
+        var value = document.getElementById('phoneNumber').value;
+        var is_valid = isValidPhoneNumber(value, function(log) {
+            document.getElementById('output').value = log;
+        });
+        document.getElementById('result').value = is_valid ? 'Valid' : 'Invalid';
+        return false;
+    }
+</script>
+
+</body>
+</html>

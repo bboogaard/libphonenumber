@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Phone Number Parser Demo</title>
+<script src="../../../../closure-library/closure/goog/base.js"></script>
+<script>
+  goog.require('goog.proto2.Message');
+</script>
+<script src="phonemetadata.pb.js"></script>
+<script src="phonenumber.pb.js"></script>
+<script src="metadata.js"></script>
+<script src="shortnumbermetadata.js"></script>
+<script src="phonenumberutil.js"></script>
+<script src="asyoutypeformatter.js"></script>
+<script src="shortnumberinfo.js"></script>
+<script src="aknl.js"></script>
+</head>
+<body>
+
+<h2>Phone Number Parser Demo</h2>
+
+<form>
+  <p>
+  Specify a Phone Number:
+  <input type="text" name="phoneNumber" id="phoneNumber" size="25" />
+  </p>
+  <p>
+  Result:
+  <input type="text" name="result" id="result" size="25" />
+  </p>
+  <input type="submit" value="Submit" onclick="return phoneNumberParse();" />
+  <input type="reset" value="Reset" />
+  <p>
+  <textarea id="output" rows="30" cols="80"></textarea>
+  </p>
+</form>
+
+<script>
+    function phoneNumberParse() {
+        var value = document.getElementById('phoneNumber').value;
+        var is_valid = isValidPhoneNumber(value, function(log) {
+            document.getElementById('output').value = log;
+        });
+        document.getElementById('result').value = is_valid ? 'Valid' : 'Invalid';
+        return false;
+    }
+</script>
+
+</body>
+</html>
